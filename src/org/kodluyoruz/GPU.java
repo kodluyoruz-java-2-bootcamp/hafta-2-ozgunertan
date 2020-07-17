@@ -10,8 +10,28 @@ package org.kodluyoruz;
  *
  * TODO Bu 2 özellik ve bunların metotları için gereken kodları bu sınıfın içine yazın
  */
-public class GPU
+public class GPU extends Hardware
 {
+    public int memory;
+    public int bits;
+
+    public int getMemory() {
+        return memory;
+    }
+
+    public int getBits() {
+        return bits;
+    }
+
+    public void setMemory(int memory) {
+        this.memory = memory;
+        setPrice(price);
+    }
+
+    public void setBits(int bits) {
+        this.bits = bits;
+        setPrice(price);
+    }
 
     /*
      * Eğer ekran kartının hafızası 8 GB'tan fazlaysa, her 2 GB için fiyatı 250 TL artar.
@@ -19,4 +39,19 @@ public class GPU
      * TODO buna göre Hardware sınıfındaki fiyat hesaplayan metodu bu sınıfta yeniden yazın
      */
 
+    @Override
+    public void setPrice(double price) {
+        if (bits > 128)
+        {
+            int extraBits = (bits - 128) / 64;
+            price += extraBits * 400.0;
+        }
+
+        if (memory > 8)
+        {
+            int extraMemory = (memory - 8) / 2;
+            price += extraMemory * 250.0;
+        }
+        super.setPrice(price);
+    }
 }

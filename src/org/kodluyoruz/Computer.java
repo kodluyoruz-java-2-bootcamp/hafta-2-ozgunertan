@@ -14,20 +14,46 @@ package org.kodluyoruz;
 public class Computer
 {
 
+
     /**
      * anakart
      */
     private Hardware motherboard;
+
+    public Hardware getMotherboard() {
+        return motherboard;
+    }
+
+    public void setMotherboard(Hardware motherboard) {
+
+        this.motherboard = (Motherboard) motherboard;
+    }
 
     /**
      * işlemci
      */
     private Hardware cpu;
 
+    public Hardware getCpu() {
+        return cpu;
+    }
+
+    public void setCpu(Hardware cpu) {
+        this.cpu = (CPU) cpu;
+    }
+
     /**
      * RAM
      */
     private Hardware ram;
+
+    public Hardware getRam() {
+        return ram;
+    }
+
+    public void setRam(Hardware ram) {
+        this.ram = (RAM) ram;
+    }
 
     /**
      * SSD
@@ -35,24 +61,42 @@ public class Computer
      */
     private Hardware ssd;
 
+    public Hardware getSsd() {
+        return ssd;
+    }
+
+    public void setSsd(Hardware ssd) {
+        this.ssd = (SSD) ssd;
+    }
+
     /**
      * ekran kartı
      * İsteğe bağlı: Her bilgisayarda ekran kartı olmayabilir
      */
     private Hardware gpu;
 
+    public Hardware getGpu() {
+        return gpu;
+    }
+
+    public void setGpu(Hardware gpu) {
+        this.gpu = (GPU) gpu;
+    }
+
     public double getTotalPrice()
     {
         // Bu metot bilgisayarın donanımlarına bakarak toplam fiyatını hesaplar.
         // TODO metodu doldurun
-        return 0.0;
+
+        return (motherboard.price + ram.price + cpu.price + gpu.price + ssd.price);
     }
 
     public int getTotalPower()
     {
+
         // Bu metot bilgisayarın donanımlarına bakarak toplamda ne kadar güç tüketeceğini hesaplar.
         // TODO metodu doldurun
-        return 0;
+        return (motherboard.power + cpu.power + ram.power + ssd.power + gpu.power);
     }
 
 }
